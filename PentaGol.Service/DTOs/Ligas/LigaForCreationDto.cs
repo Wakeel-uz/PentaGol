@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-namespace PentaGol.Service.DTOs;
+namespace PentaGol.Service.DTOs.Ligas;
 
 public class LigaForCreationDto
 {

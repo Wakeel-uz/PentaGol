@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PentaGol.Service.DTOs;
+namespace PentaGol.Service.DTOs.Games;
 
 public class GameForCreationDto
 {

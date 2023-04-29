@@ -1,4 +1,4 @@
-﻿namespace PentaGol.Service.DTOs;
+﻿namespace PentaGol.Service.DTOs.Teams;
 
 public class TeamForResultDto
 {
