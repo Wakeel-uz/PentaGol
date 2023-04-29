@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PentaGol.Domain\PentaGol.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
