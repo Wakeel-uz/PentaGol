@@ -1,4 +1,4 @@
-﻿namespace PentaGol.Service.Helpers;
+namespace PentaGol.Service.Helpers;
 
 public class EnvironmentHelper
 {
