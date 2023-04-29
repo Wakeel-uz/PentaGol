@@ -1,6 +1,5 @@
 ﻿using PentaGol.Domain.Commons;
 
-#pragma warning disable
 namespace PentaGol.Domain.Entities
 {
     public class Team : Auditable
