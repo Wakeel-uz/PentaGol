@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PentaGol.Api", "PentaGol.Api\PentaGol.Api.csproj", "{BEA718A7-E105-4AF6-8C0B-D2746EDB2EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PentaGol.Api", "PentaGol.Api\PentaGol.Api.csproj", "{BEA718A7-E105-4AF6-8C0B-D2746EDB2EE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PentaGol.Domain", "PentaGol.Domain\PentaGol.Domain.csproj", "{85144CAF-42A3-4529-8DAD-98B3782B0037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PentaGol.Domain", "PentaGol.Domain\PentaGol.Domain.csproj", "{85144CAF-42A3-4529-8DAD-98B3782B0037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PentaGol.Service", "PentaGol.Service\PentaGol.Service.csproj", "{97364705-FE9B-4440-815F-95FBDF1D8A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PentaGol.Service", "PentaGol.Service\PentaGol.Service.csproj", "{97364705-FE9B-4440-815F-95FBDF1D8A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PentaGol.Common", "PentaGol.Common\PentaGol.Common.csproj", "{95DB9ABD-0084-4B07-A264-E14060631C9F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PentaGol.Data", "PentaGol.Data\PentaGol.Data.csproj", "{C4A46B41-E534-4233-9864-BA6AF06D4971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PentaGol.Data", "PentaGol.Data\PentaGol.Data.csproj", "{C4A46B41-E534-4233-9864-BA6AF06D4971}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{97364705-FE9B-4440-815F-95FBDF1D8A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97364705-FE9B-4440-815F-95FBDF1D8A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97364705-FE9B-4440-815F-95FBDF1D8A4E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95DB9ABD-0084-4B07-A264-E14060631C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95DB9ABD-0084-4B07-A264-E14060631C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95DB9ABD-0084-4B07-A264-E14060631C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95DB9ABD-0084-4B07-A264-E14060631C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4A46B41-E534-4233-9864-BA6AF06D4971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4A46B41-E534-4233-9864-BA6AF06D4971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A46B41-E534-4233-9864-BA6AF06D4971}.Release|Any CPU.ActiveCfg = Release|Any CPU
