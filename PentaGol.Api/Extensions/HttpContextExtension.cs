@@ -1,4 +1,6 @@
-﻿namespace PentaGol.Api.Extensions; 
+﻿using PentaGol.Service.Helpers;
+
+namespace PentaGol.Api.Extensions; 
 
 public static class HttpContextExtension 
 {
