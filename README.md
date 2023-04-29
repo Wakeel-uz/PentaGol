@@ -1,4 +1,4 @@
-# <img src="https://i.imgur.com/8JMKFp9.png" width="30"> PentaGol
+# <img src="https://i.imgur.com/8JMKFp9.png" width="30"> Introduction
 
 PentaGol is a web application that allows football enthusiasts to keep track of their favorite clubs and stay up-to-date with the latest news in the world of football. With PentaGol, users can view upcoming matches, check match results, and read the latest news about their favorite football teams.
 
@@ -43,5 +43,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 If you have any questions or concerns about PentaGol, please contact us at wakeel.team.uz@gmail.com
 
-# PentaGol
+
 
