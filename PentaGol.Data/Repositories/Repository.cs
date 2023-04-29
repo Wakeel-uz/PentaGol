@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using PentaGol.Data.DatabaseConfiguration;
+using PentaGol.Data.Contexts;
 using PentaGol.Data.IRepositories;
 using PentaGol.Domain.Commons;
 using System.Linq.Expressions;
