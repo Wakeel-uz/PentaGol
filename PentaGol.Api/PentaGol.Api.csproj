@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PentaGol.Data\PentaGol.Data.csproj" />
+    <ProjectReference Include="..\PentaGol.Service\PentaGol.Service.csproj" />
   </ItemGroup>
 
 </Project>
