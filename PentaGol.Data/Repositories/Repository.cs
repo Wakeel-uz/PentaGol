@@ -46,7 +46,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
     public async ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression, string[] includes = null)
         => await SelectAll(expression, includes).FirstOrDefaultAsync();
 
-    public async ValueTask<TEntity> UpdateAsync(TEntity entity)
+    public TEntity Update(TEntity entity)
         => (this.dbSet.Update(entity)).Entity;
 
     public async ValueTask SaveChangesAsync()

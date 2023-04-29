@@ -9,6 +9,6 @@ public interface IRepository<TEntity>
     ValueTask<bool> DeleteAsync(TEntity entity);
     IQueryable<TEntity> SelectAll(Expression<Func<TEntity, bool>> expression = null, string[] includes = null, bool isTracking = true);
     ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression = null, string[] includes = null);
-    ValueTask<TEntity> UpdateAsync(TEntity entity);
+    TEntity Update(TEntity entity);
     ValueTask SaveChangesAsync();
 }
