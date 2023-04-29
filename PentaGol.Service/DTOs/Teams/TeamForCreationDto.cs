@@ -2,7 +2,7 @@
 using PentaGol.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace PentaGol.Service.DTOs;
+namespace PentaGol.Service.DTOs.Teams;
 
 public class TeamForCreationDto
 {
@@ -12,5 +12,5 @@ public class TeamForCreationDto
     public string Name { get; set; }
     [Required(ErrorMessage = "Liga Id is required")]
     public int LigaId { get; set; }
-    
+
 }

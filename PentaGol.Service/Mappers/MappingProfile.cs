@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using PentaGol.Domain.Entities;
-using PentaGol.Service.DTOs;
+using PentaGol.Service.DTOs.Games;
+using PentaGol.Service.DTOs.Ligas;
+using PentaGol.Service.DTOs.News;
+using PentaGol.Service.DTOs.Teams;
 
 namespace PentaGol.Service.Mappers;
 

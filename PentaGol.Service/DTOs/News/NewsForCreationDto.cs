@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PentaGol.Service.DTOs; 
+namespace PentaGol.Service.DTOs.News;
 
-public class NewsForCreationDto 
+public class NewsForCreationDto
 {
     [Required(ErrorMessage = "Title is required")]
     public string Title { get; set; }
