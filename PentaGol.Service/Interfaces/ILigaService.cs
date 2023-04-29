@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PentaGol.Service.DTOs;
 
-namespace PentaGol.Service.Interfaces
+namespace PentaGol.Service.Interfaces;
+
+public interface ILigaService
 {
-    public interface ILigaService
-    {
-
-    }
+    Task<LigaForResultDto> CreateAsync(LigaForCreationDto dto);
+    Task<LigaForResultDto> ModifyAsync(LigaForCreationDto dto);
+    Task<LigaForResultDto> RetrieveByIdAsync (int id);
+    Task<bool> RemoveAsync (int id);
+    Task<IEnumerable<LigaForResultDto>> RetrieveAllAsync ();
 }
