@@ -1,42 +1,49 @@
 ﻿using PentaGol.Service.Exceptions;
 
-namespace PentaGol.Api.MiddleWares;
-
-public class ExceptionHandlerMiddleWare
+namespace PentaGol.Api.MiddleWares
 {
-    private readonly RequestDelegate next;
-    private readonly ILogger<ExceptionHandlerMiddleWare> logger;
-
-    public ExceptionHandlerMiddleWare(RequestDelegate next, ILogger<ExceptionHandlerMiddleWare> logger)
+    public class ExceptionHandlerMiddleWare
     {
-        this.next = next;
-        this.logger = logger;
-    }
+        private readonly RequestDelegate next;
+        private readonly ILogger<ExceptionHandlerMiddleWare> logger;
 
-    public async Task Invoke(HttpContext context)
-    {
-        try
+        public ExceptionHandlerMiddleWare(RequestDelegate next, ILogger<ExceptionHandlerMiddleWare> logger)
         {
-            await this.next(context);
+            this.next = next;
+            this.logger = logger;
         }
-        catch (PentaGolException exception)
+
+        /// <summary>
+        /// Handles exceptions and logs them accordingly
+        /// </summary>
+        public async Task Invoke(HttpContext context)
         {
-            context.Response.StatusCode = exception.Code;
-            await context.Response.WriteAsJsonAsync(new
+            try
             {
-                Code = exception.Code,
-                Error = exception.Message
-            });
-        }
-        catch (Exception exception)
-        {
-            this.logger.LogError($"{exception.ToString()}\n");
-            context.Response.StatusCode = 500;
-            await context.Response.WriteAsJsonAsync(new
+                // Execute the next middleware in the pipeline
+                await this.next(context);
+            }
+            catch (PentaGolException exception)
             {
-                Code = 500,
-                Error = exception.Message,
-            });
+                // Handle custom exceptions
+                context.Response.StatusCode = exception.Code;
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    Code = exception.Code,
+                    Error = exception.Message
+                });
+            }
+            catch (Exception exception)
+            {
+                // Handle all other exceptions and log them
+                this.logger.LogError($"{exception.ToString()}\n");
+                context.Response.StatusCode = 500;
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    Code = 500,
+                    Error = exception.Message,
+                });
+            }
         }
     }
 }
