@@ -1,16 +1,17 @@
-﻿using PentaGol.Service.DTOs.Ligas;
+﻿using PentaGol.Domain.Entities;
+using PentaGol.Service.DTOs.News;
 using PentaGol.Service.Interfaces;
 
 namespace PentaGol.Service.Services;
 
-public class LigaService : ILigaService
+public class NewsService : INewsService
 {
-    public Task<LigaForResultDto> CreateAsync(LigaForCreationDto dto)
+    public Task<News> CreateAsync(NewsForCreationDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task<LigaForResultDto> ModifyAsync(LigaForCreationDto dto)
+    public Task<News> ModifyAsync(NewsForCreationDto dto)
     {
         throw new NotImplementedException();
     }
@@ -20,12 +21,12 @@ public class LigaService : ILigaService
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<LigaForResultDto>> RetrieveAllAsync()
+    public Task<IEnumerable<News>> RetrieveAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task<LigaForResultDto> RetrieveByIdAsync(int id)
+    public Task<News> RetrieveByIdAsync(int id)
     {
         throw new NotImplementedException();
     }

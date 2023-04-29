@@ -1,6 +1,6 @@
 ﻿using PentaGol.Domain.Commons;
 
-namespace PentaGol.Service.DTOs;
+namespace PentaGol.Service.DTOs.Games;
 
 public class GameForResultDto
 {

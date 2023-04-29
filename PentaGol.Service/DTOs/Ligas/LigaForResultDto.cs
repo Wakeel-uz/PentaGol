@@ -1,6 +1,6 @@
 ﻿using PentaGol.Domain.Entities;
 
-namespace PentaGol.Service.DTOs;
+namespace PentaGol.Service.DTOs.Ligas;
 public class LigaForResultDto
 {
     public int Id { get; set; }
