@@ -10,4 +10,5 @@ public class Game : Auditable
     public int SecondTeamId { get; set; }
     public int FirstTeamScore { get; set; }
     public int SecondTeamScore { get; set; }
+    public DateTime StartingTime { get; set; }
 }

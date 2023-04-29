@@ -12,5 +12,6 @@ public class GameForResultDto
     public int SecondTeamId { get; set; }
     public int FirstTeamScore { get; set; }
     public int SecondTeamScore { get; set; }
+    public DateTime StartingTime { get; set; }
     public bool IsFinished { get; set; }
 }

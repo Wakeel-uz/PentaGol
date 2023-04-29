@@ -12,4 +12,6 @@ public class GameForCreationDto
     public int FirstTeamScore { get; set; }
     [Required(ErrorMessage = "SecondTeamScore is required")]
     public int SecondTeamScore { get; set; }
+    public DateTime StartingDate { get; set; }
+    public bool IsFinished { get; set; }
 }
