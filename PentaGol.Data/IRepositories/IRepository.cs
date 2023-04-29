@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PentaGol.Domain.Commons;
+using System.Linq.Expressions;
 
-namespace PentaGol.Data.IRepositories
+namespace PentaGol.Data.IRepositories;
+
+public interface IRepository<TEntity>
 {
-    internal class IRepository
-    {
-    }
+    IQueryable<TEntity> SelectAllAsync(Expression<Func<TEntity, bool>> expression = null, string[] includes = null, bool isTracking = true);
+    ValueTask<TEntity> InsertAsync(TEntity entity);
+    ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression = null, string[] includes = null);
 }
