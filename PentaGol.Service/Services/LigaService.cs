@@ -1,4 +1,10 @@
-﻿using PentaGol.Service.DTOs;
+﻿using AutoMapper;
+using PentaGol.Data.IRepositories;
+using PentaGol.Domain.Entities;
+using PentaGol.Service.DTOs;
+using PentaGol.Service.DTOs.Ligas;
+using PentaGol.Service.Exceptions;
+using PentaGol.Service.Extensions;
 using PentaGol.Service.Interfaces;
 using System;
 using System.Data;
