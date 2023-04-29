@@ -1,5 +1,4 @@
 ﻿using PentaGol.Domain.Commons;
-using System.Security.Cryptography.X509Certificates;
 
 namespace PentaGol.Domain.Entities;
 
