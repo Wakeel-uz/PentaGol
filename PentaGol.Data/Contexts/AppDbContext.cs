@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using PentaGol.Domain.Entities;
 
 namespace PentaGol.Data.DatabaseConfiguration

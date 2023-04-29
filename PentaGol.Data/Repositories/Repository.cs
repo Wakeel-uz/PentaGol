@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PentaGol.Data.DatabaseConfiguration;
 using PentaGol.Data.IRepositories;
 using PentaGol.Domain.Commons;
@@ -10,33 +11,48 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 {
     protected readonly AppDbContext dbContext;
     protected readonly DbSet<TEntity> dbSet;
-    public ValueTask<bool> DeleteAsync(TEntity entity)
-    {
 
+    public Repository(AppDbContext dbContext)
+    {
+        this.dbContext = dbContext;
+        this.dbSet= dbContext.Set<TEntity>();
     }
 
-    public ValueTask<TEntity> InsertAsync(TEntity entity)
+    public async ValueTask<TEntity> InsertAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        var entry = await dbSet.AddAsync(entity);
+        return entry.Entity;
+    }
+    public async ValueTask<bool> DeleteAsync(TEntity entity)
+    {
+        dbSet.Remove(entity);
+        return true;
     }
 
-    public ValueTask SaveChangeAsync()
-    {
-        throw new NotImplementedException();
-    }
 
     public IQueryable<TEntity> SelectAll(Expression<Func<TEntity, bool>> expression = null, string[] includes = null, bool isTracking = true)
     {
-        throw new NotImplementedException();
+        IQueryable<TEntity> query = expression is null ? dbSet : dbSet.Where(expression);
+
+        if (includes is not null)
+            foreach (var include in includes)
+                query = query.Include(include);
+
+        if (!isTracking)
+            query = query.AsNoTracking();
+
+        return query;
     }
 
-    public ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression = null, string[] includes = null)
-    {
-        throw new NotImplementedException();
-    }
+    public async ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression, string[] includes = null)
+        => await SelectAll(expression, includes).FirstOrDefaultAsync();
 
-    public ValueTask<TEntity> UpdateAsync(TEntity entity)
+    public async ValueTask<TEntity> UpdateAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        EntityEntry<TEntity> entryentity = this.dbContext.Update(entity);
+
+        return entryentity.Entity;
     }
+    public async ValueTask SaveChangesAsync()
+        => await dbContext.SaveChangesAsync();
 }
