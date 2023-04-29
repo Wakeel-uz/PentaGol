@@ -7,4 +7,5 @@ public class LigaForResultDto
     public string LogoPath { get; set; }
     public string Name { get; set; }
     public ICollection<Game> Games { get; set; }
+    public LigaImageForResultDto Image { get; set; }
 }

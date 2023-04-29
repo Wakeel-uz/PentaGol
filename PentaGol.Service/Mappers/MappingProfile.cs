@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PentaGol.Domain.Entities;
+using PentaGol.Domain.Entities.ImageEntities;
 using PentaGol.Service.DTOs.Games;
 using PentaGol.Service.DTOs.Ligas;
 using PentaGol.Service.DTOs.News;
@@ -25,5 +26,7 @@ public class MappingProfile : Profile
         //Mapping Liga entity 
         CreateMap<Liga, LigaForCreationDto>().ReverseMap();
         CreateMap<Liga, LigaForResultDto>().ReverseMap();
+        CreateMap<LigaImage, LigaImageForResultDto>().ReverseMap();
+
     }
 }
