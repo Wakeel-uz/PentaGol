@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PentaGol.Data\PentaGol.Data.csproj" />
     <ProjectReference Include="..\PentaGol.Domain\PentaGol.Domain.csproj" />
   </ItemGroup>
 
