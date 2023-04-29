@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
-using PentaGol.Data.IRepositories;
-using PentaGol.Domain.Entities;
-using PentaGol.Service.DTOs;
-using PentaGol.Service.Exceptions;
-using PentaGol.Service.Extensions;
+﻿using PentaGol.Service.DTOs;
 using PentaGol.Service.Interfaces;
 using System;
 using System.Data;

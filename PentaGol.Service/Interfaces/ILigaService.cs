@@ -1,4 +1,4 @@
-﻿using PentaGol.Service.DTOs;
+﻿using PentaGol.Service.DTOs.Ligas;
 
 namespace PentaGol.Service.Interfaces;
 
