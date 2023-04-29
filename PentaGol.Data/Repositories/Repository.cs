@@ -19,13 +19,12 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
     }
 
     public async ValueTask<TEntity> InsertAsync(TEntity entity)
-    {
-        var entry = await dbSet.AddAsync(entity);
-        return entry.Entity;
-    }
+        => (await this.dbSet.AddAsync(entity)).Entity;
     public async ValueTask<bool> DeleteAsync(TEntity entity)
     {
-        dbSet.Remove(entity);
+        var existEntity = await this.dbSet.FirstOrDefaultAsync(t => t.Id.Equals(entity.Id));
+        if (existEntity is null) return false;
+        existEntity.IsDeleted = true;
         return true;
     }
 
@@ -48,11 +47,8 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
         => await SelectAll(expression, includes).FirstOrDefaultAsync();
 
     public async ValueTask<TEntity> UpdateAsync(TEntity entity)
-    {
-        EntityEntry<TEntity> entryentity = this.dbContext.Update(entity);
+        => (this.dbSet.Update(entity)).Entity;
 
-        return entryentity.Entity;
-    }
     public async ValueTask SaveChangesAsync()
         => await dbContext.SaveChangesAsync();
 }
