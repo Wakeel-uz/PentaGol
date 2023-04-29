@@ -1,16 +1,17 @@
-﻿using PentaGol.Service.DTOs.Games;
+﻿using PentaGol.Domain.Entities;
+using PentaGol.Service.DTOs.News;
 using PentaGol.Service.Interfaces;
 
 namespace PentaGol.Service.Services;
 
-public class GameService : IGameService
+public class NewsService : INewsService
 {
-    public Task<GameForResultDto> CreateAsync(GameForCreationDto dto)
+    public Task<News> CreateAsync(NewsForCreationDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task<GameForResultDto> ModifyAsync(GameForCreationDto dto)
+    public Task<News> ModifyAsync(NewsForCreationDto dto)
     {
         throw new NotImplementedException();
     }
@@ -20,12 +21,12 @@ public class GameService : IGameService
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<GameForResultDto>> RetrieveAllAsync()
+    public Task<IEnumerable<News>> RetrieveAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task<GameForResultDto> RetrieveByIdAsync(int id)
+    public Task<News> RetrieveByIdAsync(int id)
     {
         throw new NotImplementedException();
     }
