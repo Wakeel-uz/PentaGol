@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PentaGol.Service.DTOs;
 
-namespace PentaGol.Service.Interfaces
+namespace PentaGol.Service.Interfaces;
+
+public interface ITeamService
 {
-    public class ITeamService
-    {
-
-    }
+    Task<TeamForResultDto> CreateAsync(TeamForCreationDto dto);
+    Task<TeamForResultDto> ModifyAsync(TeamForCreationDto dto);
+    Task<TeamForResultDto> RetrieveById(int id);
+    Task<bool> RemoveAsync(int id);
+    Task<IEnumerable<TeamForResultDto>> RetrieveAllAsync();
 }
