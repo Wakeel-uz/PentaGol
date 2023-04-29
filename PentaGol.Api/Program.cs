@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PentaGol.Data.Contexts;
+using PentaGol.Service.Helpers;
 using PentaGol.Service.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 var app = builder.Build();
+
+//Configure ImageUploading
+EnvironmentHelper.WebHostPath =
+    app.Services.GetRequiredService<IWebHostEnvironment>().WebRootPath;
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -21,12 +21,27 @@ public class NewsService : INewsService
         throw new NotImplementedException();
     }
 
+    public Task<bool> RemoveImageAsync(int newsId)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<IEnumerable<News>> RetrieveAllAsync()
     {
         throw new NotImplementedException();
     }
 
     public Task<News> RetrieveByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<NewsImageForResultDto> RetrieveImageAsync(int newsId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<NewsImageForResultDto> UploadImageAsync(NewsImageForCreationDto dto)
     {
         throw new NotImplementedException();
     }
