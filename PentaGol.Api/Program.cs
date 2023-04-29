@@ -3,8 +3,21 @@ using PentaGol.Data.Contexts;
 using PentaGol.Service.Helpers;
 using PentaGol.Service.Mappers;
 
+var policyName = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: policyName,
+//                      builder =>
+//                      {
+//                          builder
+//                            .WithOrigins("http://localhost:3000")
+//                            //.AllowAnyOrigin()
+//                            .WithMethods("GET")
+//                            .AllowAnyHeader();
+//                      });
+//});
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -23,6 +36,7 @@ var app = builder.Build();
 EnvironmentHelper.WebHostPath =
     app.Services.GetRequiredService<IWebHostEnvironment>().WebRootPath;
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -30,8 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+//app.UseHttpsRedirection();
+//app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
