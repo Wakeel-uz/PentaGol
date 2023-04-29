@@ -1,4 +1,5 @@
-﻿using PentaGol.Domain.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using PentaGol.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ namespace PentaGol.Service.DTOs;
 public class LigaForCreationDto
 {
     [Required(ErrorMessage = "Logo Image is required")]
-    public string LogoPath { get; set; }
+    public IFormFile Image { get; set; }
     [Required(ErrorMessage = "Liga Name is required")]
     public string Name { get; set; }
     public ICollection<Game> Games { get; set; }
