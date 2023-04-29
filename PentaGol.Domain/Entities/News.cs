@@ -2,7 +2,7 @@
 
 namespace PentaGol.Domain.Entities;
 
-public class New : Auditable
+public class News : Auditable
 {
     public string Title { get; set; }
     public string Description { get; set; }
