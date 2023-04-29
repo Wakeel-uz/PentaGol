@@ -12,8 +12,8 @@ using PentaGol.Data.Contexts;
 namespace PentaGol.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230429112802_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20230429114803_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
