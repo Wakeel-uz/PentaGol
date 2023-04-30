@@ -22,6 +22,7 @@ public class MappingProfile : Profile
         //Mapping Team entity
         CreateMap<Team, TeamForCreationDto>().ReverseMap();
         CreateMap<Team, TeamForResultDto>().ReverseMap();
+        CreateMap<TeamImage, TeamForResultDto>().ReverseMap();
 
         //Mapping Liga entity 
         CreateMap<Liga, LigaForCreationDto>().ReverseMap();
