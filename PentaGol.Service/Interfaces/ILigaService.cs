@@ -1,5 +1,6 @@
 using PentaGol.Domain.Entities;
 using PentaGol.Service.DTOs.Ligas;
+using PentaGol.Service.DTOs.Teams;
 
 namespace PentaGol.Service.Interfaces;
 
@@ -13,4 +14,5 @@ public interface ILigaService
     Task<LigaImageForResultDto> UploadImageAsync(LigaImageForCreationDto dto);
     Task<bool> RemoveImageAsync (int ligaId);
     Task<LigaImageForResultDto> RetrieveImageAsync(int ligaId);
+    Task<List<TeamForResultDto>> RetrieveTeamByLigaId(int ligaId);
 }

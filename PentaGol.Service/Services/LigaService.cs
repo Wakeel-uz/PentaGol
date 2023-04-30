@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PentaGol.Data.IRepositories;
 using PentaGol.Domain.Entities;
 using PentaGol.Domain.Entities.ImageEntities;
 using PentaGol.Service.DTOs;
 using PentaGol.Service.DTOs.Ligas;
+using PentaGol.Service.DTOs.Teams;
 using PentaGol.Service.Exceptions;
 using PentaGol.Service.Extensions;
 using PentaGol.Service.Helpers;
@@ -20,6 +22,7 @@ public class LigaService : ILigaService
     #region D.A Configuration
     private readonly IMapper mapper;
     private readonly IRepository<Liga> ligaRepository;
+    private readonly IRepository<Team> teamRepository;
     private readonly IRepository<LigaImage> ligaImageRepository;
     /// <summary>
     /// Containing in D.A
@@ -27,11 +30,12 @@ public class LigaService : ILigaService
     /// <param name="mapper"></param>
     /// <param name="ligaRepository"></param>
     /// <param name="ligaImageRepository"></param>
-    public LigaService(IMapper mapper, IRepository<Liga> ligaRepository, IRepository<LigaImage> ligaImageRepository)
+    public LigaService(IMapper mapper, IRepository<Liga> ligaRepository, IRepository<LigaImage> ligaImageRepository, IRepository<Team> teamRepository)
     {
         this.mapper = mapper;
         this.ligaRepository = ligaRepository;
         this.ligaImageRepository = ligaImageRepository;
+        this.teamRepository = teamRepository;
     }
     #endregion
 
@@ -176,8 +180,18 @@ public class LigaService : ILigaService
             throw new PentaGolException(404, "Image is not found");
         return mapper.Map<LigaImageForResultDto>(ligaImage);
     }
-
     #endregion
+
+    public async Task<List<TeamForResultDto>> RetrieveTeamByLigaId(int ligaId)
+    {
+        var teams = await this.teamRepository.SelectAll(t => t.LigaId == ligaId)
+            .OrderBy(t => t.TotalScore)
+            .ThenBy(t => t.TotalScoredGoals - t.TotalReceivedGoals)
+            .ToListAsync();
+    
+        return this.mapper.Map<List<TeamForResultDto>>(teams);
+    }
+
 
     #region Upload Image
     /// <summary>

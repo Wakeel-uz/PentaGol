@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PentaGol.Api.Extensions;
+using PentaGol.Api.MiddleWares;
 using PentaGol.Data.Contexts;
 using PentaGol.Service.Helpers;
 using PentaGol.Service.Mappers;
@@ -30,14 +31,13 @@ builder.Services.AddCustomServices();
 builder.Services.AddDbContext<AppDbContext>(options =>
        options.UseNpgsql(builder.Configuration.GetConnectionString("MyDatabase")));
 
-
 var app = builder.Build();
 
 //Configure ImageUploading
 EnvironmentHelper.WebHostPath =
     app.Services.GetRequiredService<IWebHostEnvironment>().WebRootPath;
 
-
+app.UseMiddleware<ExceptionHandlerMiddleWare>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
