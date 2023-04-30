@@ -10,8 +10,20 @@ public class Game : Auditable
     public int FirstTeamScore { get; set; }
     public int SecondTeamScore { get; set; }
     public DateTime StartingTime { get; set; }
-    
-    //To determine whether the game has finished or not 
-    public bool IsFinished { get; set; }
+    public int DurationInMinutes { get; set; }
+
+    public bool IsFinished
+    {
+        get
+        {
+            return DateTime.UtcNow >= this.GetFinishingTime();
+        }
+    }
+
+    public DateTime GetFinishingTime()
+    {
+        return this.StartingTime.AddMinutes(this.DurationInMinutes);
+    }
+
 
 }
