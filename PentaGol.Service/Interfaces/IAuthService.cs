@@ -1,6 +1,8 @@
-﻿namespace PentaGol.Service.Interfaces;
+﻿using PentaGol.Service.DTOs;
+
+namespace PentaGol.Service.Interfaces;
 
 public interface IAuthService
 {
-    Task<string> GenerateTokenAsync(string username, string password);
+    Task<string> AuthenticateAsync(string username, string password);
 }
