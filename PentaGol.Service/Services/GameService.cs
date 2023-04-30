@@ -13,6 +13,7 @@ public class GameService : IGameService
     #region D.A Configuration
     private readonly IMapper _mapper;
     private readonly IRepository<Game> _gameRepository;
+    private readonly ITeamService _teamService;
     /// <summary>
     /// Containing in D.A
     /// </summary>
@@ -20,10 +21,13 @@ public class GameService : IGameService
     /// <param name="gameRepository"></param>
     public GameService(
         IMapper mapper,
-        IRepository<Game> gameRepository)
+        IRepository<Game> gameRepository
+,
+        ITeamService teamService)
     {
         this._mapper = mapper;
         this._gameRepository = gameRepository;
+        _teamService = teamService;
     }
     #endregion
 
@@ -36,13 +40,55 @@ public class GameService : IGameService
     /// <exception cref="PentaGolException"></exception>
     public async Task<GameForResultDto> CreateAsync(DTOs.Games.GameForCreationDto dto)
     {
-        Game game = await this._gameRepository
-            .SelectAsync(u => u.FirstTeamId == dto.FirstTeamId);
-        if (game is not null)
-            throw new PentaGolException(403, "Game already exist with this name");
+        var mappedGame = _mapper.Map<Game>(dto);
+        if(mappedGame.IsFinished == true)
+        {
+            var firstTeam = _teamService.RetrieveById(mappedGame.FirstTeamId);
+            var secondTeam = _teamService.RetrieveById(mappedGame.SecondTeamId);
+            var mappedFirstTeam = _mapper.Map<Team>(firstTeam);
+            var mappedSecondTeam = _mapper.Map<Team>(secondTeam);
+            if (mappedGame.FirstTeamScore > mappedGame.SecondTeamScore)
+            {
+                //First team wins
+                mappedFirstTeam.TotalScore += 3;
+                mappedFirstTeam.TotalGame += 1;
+                mappedFirstTeam.TotalScoredGoals += mappedGame.FirstTeamScore;
+                mappedFirstTeam.TotalReceivedGoals += mappedGame.SecondTeamScore;
 
-        var mappedPosition = _mapper.Map<Game>(dto);
-        var result = await this._gameRepository.InsertAsync(mappedPosition);
+                mappedSecondTeam.TotalGame += 1;
+                mappedSecondTeam.TotalScoredGoals = mappedGame.SecondTeamScore;
+                mappedSecondTeam.TotalReceivedGoals = mappedGame.FirstTeamScore;
+            }
+            else if(mappedGame.SecondTeamScore > mappedGame.FirstTeamScore)
+            {
+                //Second team wins
+                mappedSecondTeam.TotalScore += 3;
+                mappedSecondTeam.TotalGame += 1;
+                mappedSecondTeam.TotalScoredGoals += mappedGame.SecondTeamScore;
+                mappedSecondTeam.TotalReceivedGoals += mappedGame.FirstTeamScore;
+
+                mappedFirstTeam.TotalGame += 1;
+                mappedFirstTeam.TotalScoredGoals += mappedGame.FirstTeamScore;
+                mappedFirstTeam.TotalReceivedGoals += mappedGame.SecondTeamScore;
+            }
+            else
+            {
+                mappedFirstTeam.TotalScore += 1;
+                mappedSecondTeam.TotalScore += 1;
+
+                mappedFirstTeam.TotalGame += 1;
+                mappedFirstTeam.TotalScoredGoals += mappedGame.FirstTeamScore;
+                mappedFirstTeam.TotalReceivedGoals += mappedGame.SecondTeamScore;
+
+
+                mappedSecondTeam.TotalGame += 1;
+                mappedSecondTeam.TotalScoredGoals += mappedGame.SecondTeamScore;
+                mappedSecondTeam.TotalReceivedGoals += mappedGame.FirstTeamScore;
+            }
+            await _teamService.ModifyAsync(mappedFirstTeam);
+            await _teamService.ModifyAsync(mappedSecondTeam);
+        }
+        var result = await this._gameRepository.InsertAsync(mappedGame);
         await this._gameRepository.SaveChangesAsync();
         return this._mapper.Map<GameForResultDto>(result);
 
@@ -112,5 +158,7 @@ public class GameService : IGameService
         // Map Entity to DTO and return
         return this._mapper.Map<GameForResultDto>(game);
     }
+
+    
 }
     #endregion
