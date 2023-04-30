@@ -21,7 +21,11 @@ namespace PentaGol.Api.Controllers
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
-            => Ok(await this.ligaService.RetrieveByIdAsync(id));
+            => Ok(new
+            {
+                Code = 200,
+                
+            });
 
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromForm]LigaForCreationDto liga)
