@@ -13,11 +13,12 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         //Mapping Game entity
-        CreateMap<Game, GameForCreationDto>().ReverseMap();
+        CreateMap<Game, DTOs.Games.GameForCreationDto>().ReverseMap();
         CreateMap<Game, GameForResultDto>().ReverseMap();
 
         //Mapping News entity
         CreateMap<News, NewsForCreationDto>().ReverseMap();
+        CreateMap<NewsImage, NewsImageForResultDto>().ReverseMap();
 
         //Mapping Team entity
         CreateMap<Team, TeamForCreationDto>().ReverseMap();
@@ -25,7 +26,7 @@ public class MappingProfile : Profile
         CreateMap<TeamImage, TeamForResultDto>().ReverseMap();
 
         //Mapping Liga entity 
-        CreateMap<Liga, LigaForCreationDto>().ReverseMap();
+        CreateMap<Liga, DTOs.Ligas.GameForCreationDto>().ReverseMap();
         CreateMap<Liga, LigaForResultDto>().ReverseMap();
         CreateMap<LigaImage, LigaImageForResultDto>().ReverseMap();
 
