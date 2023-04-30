@@ -18,11 +18,8 @@ public static class ServiceExtension
     /// <param name="services"></param>
     public static void AddCustomServices(this IServiceCollection services)
     {
-        services.AddScoped<IRepository<Game>, Repository<Game>>();
-        services.AddScoped<IRepository<Liga>, Repository<Liga>>();
-        services.AddScoped<IRepository<News>, Repository<News>>();
-        services.AddScoped<IRepository<Team>, Repository<Team>>();
-
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+      
         services.AddScoped<IGameService, GameService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ILigaService, LigaService>();

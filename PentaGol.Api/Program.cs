@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PentaGol.Api.Extensions;
 using PentaGol.Data.Contexts;
 using PentaGol.Service.Helpers;
 using PentaGol.Service.Mappers;
@@ -24,7 +25,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
+builder.Services.AddCustomServices();
 //Add database to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
        options.UseNpgsql(builder.Configuration.GetConnectionString("MyDatabase")));

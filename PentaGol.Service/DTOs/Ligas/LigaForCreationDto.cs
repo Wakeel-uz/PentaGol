@@ -10,7 +10,7 @@ public class LigaForCreationDto
 {
     [Required(ErrorMessage = "Logo Image is required")]
     public IFormFile Image { get; set; }
+
     [Required(ErrorMessage = "Liga Name is required")]
     public string Name { get; set; }
-    public ICollection<Game> Games { get; set; }
 }
