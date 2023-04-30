@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PentaGol.Domain.Entities;
 using PentaGol.Service.DTOs.Ligas;
+using PentaGol.Service.DTOs.Teams;
 using PentaGol.Service.Interfaces;
 using PentaGol.Service.Services;
 
@@ -32,6 +33,12 @@ namespace PentaGol.Api.Controllers
         {
             return Ok(await this.ligaService.UploadImageAsync(ligaImage));
         }
+        [HttpGet("teams-by-score/{LigaId}")]
+        public async Task<IActionResult> RetrieveTeamsByScore(int LigaId)
+        {
+            return Ok(await this.ligaService.RetrieveTeamByLigaId(LigaId));
+        }
+        
     }
 
 }
