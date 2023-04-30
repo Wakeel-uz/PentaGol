@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.IdentityModel.Tokens;
 using PentaGol.Data.IRepositories;
 using PentaGol.Data.Repositories;
 using PentaGol.Domain.Entities;
 using PentaGol.Service.Interfaces;
 using PentaGol.Service.Services;
+using System.Text;
 
 namespace PentaGol.Api.Extensions;
 
