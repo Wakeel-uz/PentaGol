@@ -22,10 +22,15 @@ namespace PentaGol.Api.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
             => Ok(await this.ligaService.RetrieveByIdAsync(id));
 
-        [HttpPost("liga")]
-        public async Task<IActionResult> CreateAsync([FromBody]LigaForCreationDto liga)
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromForm]LigaForCreationDto liga)
         {
             return Ok(await this.ligaService.CreateAsync(liga));
+        }
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> ImageUpload([FromForm]LigaImageForCreationDto ligaImage)
+        {
+            return Ok(await this.ligaService.UploadImageAsync(ligaImage));
         }
     }
 

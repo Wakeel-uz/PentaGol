@@ -8,6 +8,6 @@ public class NewsForCreationDto
     public string Title { get; set; }
     [Required(ErrorMessage = "Description is required")]
     public string Description { get; set; }
-    [Required(ErrorMessage = "ImagePath is required")]
-    public string ImagePath { get; set; }
+    //[Required(ErrorMessage = "ImagePath is required")]
+    //public string ImagePath { get; set; }
 }

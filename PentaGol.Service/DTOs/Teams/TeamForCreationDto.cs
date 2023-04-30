@@ -6,8 +6,8 @@ namespace PentaGol.Service.DTOs.Teams;
 
 public class TeamForCreationDto
 {
-    [Required(ErrorMessage = "Image is required")]
-    public IFormFile Image { get; set; }
+    //[Required(ErrorMessage = "Image is required")]
+    //public IFormFile Image { get; set; }
     [Required(ErrorMessage = "Club name is required")]
     public string Name { get; set; }
     [Required(ErrorMessage = "Liga Id is required")]

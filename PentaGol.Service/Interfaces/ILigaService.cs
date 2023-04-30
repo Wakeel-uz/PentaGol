@@ -10,4 +10,7 @@ public interface ILigaService
     Task<LigaForResultDto> RetrieveByIdAsync (int id);
     Task<bool> RemoveAsync (int id);
     Task<IEnumerable<LigaForResultDto>> RetrieveAllAsync ();
+    Task<LigaImageForResultDto> UploadImageAsync(LigaImageForCreationDto dto);
+    Task<bool> RemoveImageAsync (int ligaId);
+    Task<LigaImageForResultDto> RetrieveImageAsync(int ligaId);
 }

@@ -4,7 +4,6 @@ namespace PentaGol.Domain.Entities;
 
 public class Team : Auditable
 {
-    public string ImagePath { get; set; }
     public string Name { get; set; }
     public int LigaId { get; set; }
     public Liga Liga { get; set; }
