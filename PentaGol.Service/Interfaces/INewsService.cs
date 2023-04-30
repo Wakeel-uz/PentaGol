@@ -6,11 +6,11 @@ namespace PentaGol.Service.Interfaces;
 
 public interface INewsService
 {
-    Task<News> CreateAsync(NewsForCreationDto dto);
-    Task<News> ModifyAsync(NewsForCreationDto dto);
+    Task<NewsForResultDto> CreateAsync(NewsForCreationDto dto);
+    Task<NewsForResultDto> ModifyAsync(News dto);
     Task<bool> RemoveAsync(int id);
-    Task<News> RetrieveByIdAsync(int id);
-    Task<IEnumerable<News>> RetrieveAllAsync();
+    Task<NewsForResultDto> RetrieveByIdAsync(int id);
+    Task<IEnumerable<NewsForResultDto>> RetrieveAllAsync();
     Task<NewsImageForResultDto> UploadImageAsync(NewsImageForCreationDto dto);
     Task<NewsImageForResultDto> RetrieveImageAsync(int newsId);
     Task<bool> RemoveImageAsync(int newsId);

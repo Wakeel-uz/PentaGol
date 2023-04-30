@@ -27,7 +27,7 @@ public class NewsService : INewsService
         this._newsImageRepository = newsImageRepository;
     }
 
-    public async Task<News> CreateAsync(NewsForCreationDto dto)
+    public async Task<NewsForResultDto> CreateAsync(NewsForCreationDto dto)
     {
         News news = await this._newsRepository.SelectAsync(n => n.Title.ToLower() == dto.Title.ToLower());
         if (news is not null)
@@ -35,8 +35,8 @@ public class NewsService : INewsService
 
         News mappedNews = _mapper.Map<News>(dto);
         var result = await this._newsRepository.InsertAsync(mappedNews);
-        await this._newsRepository.SaveChangesAsync();
-        return this._mapper.Map<News>(result);
+        await _newsRepository.SaveChangesAsync();
+        return _mapper.Map<NewsForResultDto>(result);
     }
     #region Update News
     /// <summary>
@@ -45,9 +45,9 @@ public class NewsService : INewsService
     /// <param name="dto"></param>
     /// <returns></returns>
     /// <exception cref="PentaGolException"></exception>
-    public async Task<News> ModifyAsync(NewsForCreationDto dto)
+    public async Task<NewsForResultDto> ModifyAsync(News dto)
     {
-        var modifyingNews = await this._newsImageRepository.SelectAsync(l => l.Id.Equals(dto.));
+        var modifyingNews = await this._newsImageRepository.SelectAsync(n => n.Id.Equals(dto.Id));
         if (modifyingNews is null)
             throw new PentaGolException(404, "News couldn't be found");
 
@@ -55,7 +55,7 @@ public class NewsService : INewsService
         modifyingNews.UpdatedAt = DateTime.UtcNow;
         await this._newsImageRepository.SaveChangesAsync();
 
-        var result = _mapper.Map<News>(modifyingNews);
+        var result = _mapper.Map<NewsForResultDto>(modifyingNews);
         result.Image = _mapper.Map<NewsImageForResultDto>(
             await this._newsImageRepository.SelectAsync(l => l.NewsId.Equals(result.Id)));
         return result;
@@ -81,13 +81,13 @@ public class NewsService : INewsService
     /// Fetching all News
     /// </summary>
     /// <returns>IEnumerable</returns>
-    public async Task<IEnumerable<News>> RetrieveAllAsync()
+    public async Task<IEnumerable<NewsForResultDto>> RetrieveAllAsync()
     {
         var news = _newsRepository.SelectAll(isTracking: false);
-        var result = _mapper.Map<IEnumerable<News>>(news);
+        var result = _mapper.Map<IEnumerable<NewsForResultDto>>(news);
 
         foreach (var item in result)
-            item.Image = _mapper.Map<News>(
+            item.Image = _mapper.Map<NewsImageForResultDto>(
                 await this._newsImageRepository.SelectAsync(l => l.NewsId.Equals(item.Id)));
         return result;
     }
@@ -101,13 +101,13 @@ public class NewsService : INewsService
     /// <param name="id"></param>
     /// <returns>One Liga</returns>
     /// <exception cref="PentaGolException"></exception>
-    public async Task<News> RetrieveByIdAsync(int id)
+    public async Task<NewsForResultDto> RetrieveByIdAsync(int id)
     {
         var news = await this._newsRepository.SelectAsync(l => l.Id.Equals(id));
         if (news is null)
             throw new PentaGolException(404, "News couldn't be found");
 
-        var result = _mapper.Map<News>(news);
+        var result = _mapper.Map<NewsForResultDto>(news);
         result.Image = _mapper.Map<NewsImageForResultDto>(
             await this._newsImageRepository.SelectAsync(l => l.Id.Equals(result.Id)));
 

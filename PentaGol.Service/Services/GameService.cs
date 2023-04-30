@@ -57,9 +57,9 @@ public class GameService : IGameService
     /// <param name="dto"></param>
     /// <returns></returns>
     /// <exception cref="PentaGolException"></exception>
-    public async Task<GameForResultDto> ModifyAsync(DTOs.Games.GameForCreationDto dto)
+    public async Task<GameForResultDto> ModifyAsync(Game dto)
     {
-        Game modifyingGame = await this._gameRepository.SelectAsync(p => p.Id.Equals(dto.));
+        Game modifyingGame = await this._gameRepository.SelectAsync(p => p.Id.Equals(dto.Id));
         if (modifyingGame is null)
             throw new PentaGolException(404, "Game not found");
 

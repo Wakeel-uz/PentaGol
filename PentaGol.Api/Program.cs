@@ -3,7 +3,7 @@ using PentaGol.Data.Contexts;
 using PentaGol.Service.Helpers;
 using PentaGol.Service.Mappers;
 
-var policyName = "_myAllowSpecificOrigins";
+//var policyName = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddCors(options =>
