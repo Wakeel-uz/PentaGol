@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 namespace PentaGol.Service.DTOs.Ligas;
 
-public class LigaForCreationDto
+public class GameForCreationDto
 {
     [Required(ErrorMessage = "Logo Image is required")]
     public IFormFile Image { get; set; }
