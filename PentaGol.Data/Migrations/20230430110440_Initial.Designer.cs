@@ -12,8 +12,8 @@ using PentaGol.Data.Contexts;
 namespace PentaGol.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230430071026_FirstOne")]
-    partial class FirstOne
+    [Migration("20230430110440_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace PentaGol.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("DurationInMinutes")
+                        .HasColumnType("integer");
+
                     b.Property<int>("FirstTeamId")
                         .HasColumnType("integer");
 
@@ -46,9 +49,6 @@ namespace PentaGol.Data.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsFinished")
                         .HasColumnType("boolean");
 
                     b.Property<int>("SecondTeamId")

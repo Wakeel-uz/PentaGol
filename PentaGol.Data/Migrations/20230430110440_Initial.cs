@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace PentaGol.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstOne : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,7 +24,7 @@ namespace PentaGol.Data.Migrations
                     FirstTeamScore = table.Column<int>(type: "integer", nullable: false),
                     SecondTeamScore = table.Column<int>(type: "integer", nullable: false),
                     StartingTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsFinished = table.Column<bool>(type: "boolean", nullable: false),
+                    DurationInMinutes = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)

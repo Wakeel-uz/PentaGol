@@ -33,6 +33,9 @@ namespace PentaGol.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("DurationInMinutes")
+                        .HasColumnType("integer");
+
                     b.Property<int>("FirstTeamId")
                         .HasColumnType("integer");
 
@@ -43,9 +46,6 @@ namespace PentaGol.Data.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsFinished")
                         .HasColumnType("boolean");
 
                     b.Property<int>("SecondTeamId")
